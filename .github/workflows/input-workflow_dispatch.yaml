@@ -1,23 +1,12 @@
-name: 04 workflow_dispatch
-
+name: Greeting Action
 on:
   workflow_dispatch:
     inputs:
-      username:
-        description: 'Username'
-        default: 'Jwala'
-        required: true
-        type: string
-      position:
-        description: 'Position'
-        required: true
-        type: number
-
+      name:
+        default: "Jwala"
+        description: "Name to greet"
 jobs:
-  echo-username-age:
+  say-hello:
     runs-on: ubuntu-latest
     steps:
-        name: Echo Username
-        run: echo "Username: ${{ inputs.username }}"
-        name: echo position
-        run:  echo "position: ${{ inputs.position }}"
+      - run: echo "Hello ${{inputs.name }}"
