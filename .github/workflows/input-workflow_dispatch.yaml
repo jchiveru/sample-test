@@ -1,4 +1,4 @@
-name: Greeting Action
+name: input-dispatch
 on:
   workflow_dispatch:
     inputs:
