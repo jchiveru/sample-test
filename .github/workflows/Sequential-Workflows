@@ -1,0 +1,14 @@
+name: Sequential Dispatch Workflows
+on:
+  workflow_run:
+    workflows: ["input-dispatch"]
+    types:
+      - completed
+
+jobs:
+  echo-hi-all:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo "Hi SPARE"
+        run: |
+          echo "Hi SPARE"
