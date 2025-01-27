@@ -1,0 +1,10 @@
+name: reusable_workflow_2
+on:
+  workflow_call:
+    
+jobs:
+  install_tox:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Install tox
+        run: pip install tox
