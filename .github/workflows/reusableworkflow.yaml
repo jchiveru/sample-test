@@ -1,4 +1,4 @@
-name: files sharing
+name: files sharing -call
 on:
   workflow_call:
     inputs:
