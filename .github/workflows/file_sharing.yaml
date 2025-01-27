@@ -27,6 +27,8 @@ jobs:
         with:
           name: coverage
           path: ${{ github.workspace }}/backend/.coverage
+          include-hidden-files: true
+        
   
   load-file-example:
     runs-on: ubuntu-22.04
