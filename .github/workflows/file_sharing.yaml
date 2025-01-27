@@ -1,5 +1,4 @@
-name: 07 Passing Files In Artifacts
-
+name: files sharing
 on:
   workflow_dispatch:
     
