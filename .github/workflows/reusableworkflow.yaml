@@ -1,4 +1,4 @@
-name: files sharing
+name: reusable workflow
 on:
   workflow_dispatch:
 
