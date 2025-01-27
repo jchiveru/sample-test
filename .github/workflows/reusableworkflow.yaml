@@ -1,11 +1,11 @@
 name: files sharing
 on:
   workflow_call:
+    inputs:
+      python-version:
+        required: true
+        type: string
 
- inputs: 
-  python-version:
-  
-    
 jobs:
   unit-tests:
     runs-on: ubuntu-22.04
@@ -13,13 +13,14 @@ jobs:
       - name: Checkout source code 
         uses: actions/checkout@v4
 
-      - name: Install Python 3.10
+      - name: Install Python
         uses: actions/setup-python@v4
         with:
-          python-version: ${{ inputs.node-version }}
+          python-version: ${{ inputs.python-version }}
 
       - name: Install tox
         run: pip install tox
+
       - name: Run unit tests
         run: |
           cd backend
@@ -32,8 +33,7 @@ jobs:
           name: coverage
           path: ${{ github.workspace }}/backend/.coverage
           include-hidden-files: true
-        
-  
+
   load-file-example:
     runs-on: ubuntu-22.04
     needs: [unit-tests]
@@ -43,3 +43,6 @@ jobs:
         with:
           name: coverage
           path: ${{ github.workspace }}
+
+      - name: List folder
+        run: ls -la ${{ github.workspace }}
