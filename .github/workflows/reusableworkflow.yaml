@@ -15,7 +15,7 @@ jobs:
           python-version: '3.10'
 
   install-tox:
-    uses: /sample-test/.github/workflows/reusableworkflow_2.yaml@main
+    uses: jchiveru/sample-test/.github/workflows/reusableworkflow_2.yaml@main
 
   unit-tests:
     runs-on: ubuntu-22.04
