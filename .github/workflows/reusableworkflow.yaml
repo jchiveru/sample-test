@@ -1,9 +1,9 @@
-name: reusable workflow
+name: files sharing
 on:
   workflow_dispatch:
-
+    
 jobs:
-  setup:
+  unit-tests:
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout source code 
@@ -14,13 +14,8 @@ jobs:
         with:
           python-version: '3.10'
 
-  install-tox:
-    uses: jchiveru/sample-test/.github/workflows/reusableworkflow_2.yaml@main
-
-  unit-tests:
-    runs-on: ubuntu-22.04
-    needs: [setup]
-    steps:
+      - name: Install tox
+        run: pip install tox
       - name: Run unit tests
         run: |
           cd backend
@@ -33,7 +28,8 @@ jobs:
           name: coverage
           path: ${{ github.workspace }}/backend/.coverage
           include-hidden-files: true
-
+        
+  
   load-file-example:
     runs-on: ubuntu-22.04
     needs: [unit-tests]
@@ -43,6 +39,3 @@ jobs:
         with:
           name: coverage
           path: ${{ github.workspace }}
-
-      - name: List folder 
-        run: ls -la ${{ github.workspace }}
