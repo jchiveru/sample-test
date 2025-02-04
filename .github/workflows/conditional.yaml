@@ -1,1 +1,17 @@
+name: Debugging -Session
 
+on:
+  push:
+jobs:
+  debugging-demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up tmate manually
+        run: |
+          sudo apt-get install tmate
+          tmate -F
+          
+        
